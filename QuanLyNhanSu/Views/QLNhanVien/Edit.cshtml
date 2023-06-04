@@ -1,0 +1,177 @@
+﻿@model QuanLyNhanSu.Models.tblThongTinNV
+
+@{ ViewBag.Title = "Edit";
+    if (ViewBag.quyen == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+<h2 class="headerh2">Sửa thông tin nhân viên</h2> }
+else
+{
+Layout = "~/Views/Shared/_Layout2.cshtml";
+<h2 class="headerh2">Cập nhập</h2> }
+var ImagePath = "~/Images/" + Model.UrlAnh; }
+@using (Html.BeginForm("Edit",
+                        "QLNhanVien",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
+
+                <div class="form-horizontal px-md-5">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.MaNV)
+
+                    <div class="form-group d-flex pb-3">
+                        @Html.LabelFor(model => model.TenNV, htmlAttributes: new { @class = "control-label col-md-2 " })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.CMT, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.CMT, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CMT, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.GioiTinh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/MM/yyyy", @id = "datepicker", @value = ViewBag.NgaySinh } })
+                            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.ChucVu, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.TrinhDo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.TrinhDo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TrinhDo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.MaHSL, "Hệ số lương", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.DropDownList("MaHSL", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaHSL, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.MaPhong, "Phòng/ban", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.DropDownList("MaPhong", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaPhong, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.BHXH, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.BHXH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.BHXH, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.DanToc, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.DanToc, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DanToc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex pb-2">
+                        @Html.LabelFor(model => model.TonGiao, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.EditorFor(model => model.TonGiao, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TonGiao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UrlAnh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 d-flex">
+                            @Html.TextBox("editImage", "", new { type = "file", accept = "" })
+                            <br />
+                            <input name="UrlAnh" value="@Model.UrlAnh" type="hidden" />
+                            <img id="preview" src="@Url.Content(ImagePath)" width="180" height="200" class="hidden" />
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Cập nhập" class="btn btn-success" /> &nbsp;
+
+                        </div>
+                    </div>
+                </div>}
+
+<div class="d-flex justify-content-center pt-3">
+    <button onclick="goBack()" class="btn btn-primary">Quay lại</button>
+</div>
+<script>
+
+    editImage.onchange = evt => {
+
+        const [file] = editImage.files
+
+        if (file) {
+
+            preview.src = URL.createObjectURL(file);
+
+            $("#preview").removeClass("hidden");
+
+        }
+    }
+    function goBack() {
+        window.history.back();
+    }
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>

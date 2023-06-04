@@ -1,0 +1,83 @@
+﻿@model QuanLyNhanSu.Models.tblThongTinNV
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ImagePath = "~/Images/" + Model.UrlAnh;
+}
+
+<h2 class="headerh2">Xóa nhân viên</h2>
+<div class="d-flex justify-content-center align-content-center">
+    <dl class="dl-horizontal px-md-5">
+        <dt>
+            Phòng ban
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblPhong.TenPhong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CMT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CMT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChucVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChucVu)
+        </dd>
+        <dd>
+            <img src="@Url.Content(ImagePath)" width="180" height="200" class="img-thumbnail" />
+        </dd>
+        <dd>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xác nhận xóa" class="btn btn-danger" /> |
+                    @Html.ActionLink("Quay lại", "Index", null, new{ @class = "btn btn-success"})
+                 </div>
+            }
+        </dd>
+    </dl>
+
+    
+</div>

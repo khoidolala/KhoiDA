@@ -1,0 +1,80 @@
+﻿@model QuanLyNhanSu.Models.tblLuong
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2">Xóa</h2>
+
+
+<div class="d-flex justify-content-center">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tblThongTinNV.TenNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblThongTinNV.TenNV)
+        </dd>
+
+        <dt>
+            Mã thưởng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblThuong.MaThuong)
+        </dd>
+
+        <dt>
+            Tháng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thang)
+        </dd>
+
+        <dt>
+            Số ngày làm việc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoNgayLamViec)
+        </dd>
+
+        <dt>
+            Số giờ làm việc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoGioLamViec)
+        </dd>
+        <dt>
+            Tiền phạt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienPhat)
+        </dd>
+
+        <dt>
+            Tạm ứng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TamUng)
+        </dd>
+
+    </dl>
+</div>
+<div class="d-flex justify-content-center">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xác nhân xóa" class="btn btn-danger" /> &nbsp;
+            @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

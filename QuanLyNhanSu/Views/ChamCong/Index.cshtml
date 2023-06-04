@@ -1,0 +1,97 @@
+﻿@model PagedList.IPagedList<QuanLyNhanSu.Models.tblChamCongs>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2">Danh sách chấm công</h2>
+@using (Html.BeginForm("Index", "ChamCong", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group d-flex px-md-4 pb-2">
+        <div class="input-group w-50">
+            <label class="input-group-btn">
+                <span class="btn btn-primary">
+                    Chọn tệp&hellip; <input type="file" style="display: none;" name="excelFile" id="exampleInputFile">
+                </span>
+            </label>
+            <input type="text" class="form-control" readonly  placeholder="Chỉ hỗ trợ tệp .xls, .xlsx">
+        </div>
+        <button type="submit" class="btn btn-primary">Tải lên</button>
+    </div>
+
+    <div class="alert alert-info" role="alert" style="display:none;"> </div>
+    <div class="px-md-5"><p class="text-danger">@ViewBag.Message</p></div>
+}
+<form class="px-md-4">
+    <table class="table">
+        <tr>
+            <th>
+                Mã nhân viên
+            </th>
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                Ngày
+            </th>
+            <th>
+                Thời gian vào
+            </th>
+            <th>
+                Thời gian ra
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaNV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenNV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ThoiGianVao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ThoiGianRa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrangThai)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</form>
+<div class="pagination px-md-4 pt-2">
+    @if (Model != null)
+    {
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @class = "pagination" }))
+    }
+</div>
+<script>
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        $('input[type="text"]').val(fileName);
+        $('.alert-info').hide();
+        $('.help-block').hide();
+    });
+
+    localStorage.removeItem("noti")
+</script>

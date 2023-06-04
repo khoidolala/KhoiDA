@@ -1,0 +1,90 @@
+﻿@model QuanLyNhanSu.Models.tblChamCongs
+@{ ViewBag.Title = "NhanVienChamCong";
+                Layout = "~/Views/Shared/_Layout2.cshtml"; }
+<h2 class="headerh2">Chấm công</h2>
+<div class="d-flex justify-content-center">
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+
+        <h3 class="text-danger px-md-5">@ViewBag.Message</h3> 
+    }
+     else
+    {
+    using (Html.BeginForm("NhanVienChamCong", "ChamCong", FormMethod.Post))
+    {
+    <div class="px-md-5">
+        <input type="button" value="Giờ vào" onclick="getCurrentTime()" />
+        <input type="text" id="timeBox" name="timeBox" />
+        <input type="button" value="Giờ Ra" onclick="getCurrentTime1()" />
+        <input type="text" id="timeBox1" name="timeBox1" />
+        <input type="submit" value="Chấm công" />
+    </div>}
+}
+</div>
+
+<div class="px-md-5">
+    <table class="table">
+        <tr>
+            <th>
+                Ngày
+            </th>
+            <th>
+                Giờ vào
+            </th>
+            <th>
+                Giờ ra
+            </th>
+            <th>
+                Trạng thái
+            </th>
+        </tr>
+        <tr>
+            @if (Model != null)
+            {
+                <th>
+                    @Model.Ngay
+                </th>
+                <th>
+                    @Model.ThoiGianVao
+                </th>
+                <th>
+                     @Model.ThoiGianRa
+                </th>
+                <th>
+                    @Model.TrangThai
+                </th>
+             }
+        </tr>
+    </table>
+</div>
+
+<script>
+    function getCurrentTime() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        if (hour >= 0 && hour < 12) {
+            var time = hour + ":" + minute + ":" + second + " " + "AM";
+        }
+        else {
+            var time = hour - 12 + ":" + minute + ":" + second + " " + "PM";
+        }
+
+        document.getElementById("timeBox").value = time;
+    }
+    function getCurrentTime1() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        if (hour >= 0 && hour < 12) {
+            var time = hour + ":" + minute + ":" + second + " " + "AM";
+        }
+        else {
+            var time = hour - 12 + ":" + minute + ":" + second + " " + "PM";
+        }
+        document.getElementById("timeBox1").value = time;
+    }
+</script>
+

@@ -1,0 +1,54 @@
+﻿@model List<QuanLyNhanSu.Models.tblLuong>
+
+@{
+    ViewBag.Title = "LuongNV";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2 class="headerh2">Lương nhân viên @Session["TenNV"]</h2>
+<form class="px-md-5">
+    <table class="table">
+        <tr class="">
+            <th>
+                Tháng
+            </th>
+            <th>
+                Số ngày làm việc
+            </th>
+            <th>
+                Hệ số lương
+            </th>
+            <th>
+                Tạm ứng
+            </th>
+            <th>
+                <a>Tổng lương</a>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoNgayLamViec)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblHSL.HSL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TamUng)
+                </td>
+                <td>
+                    @item.TongLuong()
+                </td>
+                <td>
+                    @Html.ActionLink("Chi tiết", "ChiTietLuong", new { id = item.MaLuong })
+                </td>
+            </tr>
+         }
+    </table>
+</form>

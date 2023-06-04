@@ -1,0 +1,139 @@
+﻿@model QuanLyNhanSu.Models.tblThongTinNV
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ImagePath = "~/Images/" + Model.UrlAnh;
+}
+
+<h2 class="headerh2">Chi tiết thông tin nhân sự</h2>
+<form class="px-md-5">
+    <div class="d-flex">
+        <dl class="dl-horizontal px-md-5">
+            <dt>
+                Hệ số lương
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblHSL.HSL)
+            </dd>
+
+            <dt>
+                Phòng/ban
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblPhong.TenPhong)
+            </dd>
+
+            <dt>
+                Họ và tên
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenNV)
+            </dd>
+
+            <dt>
+                Số CMT/CCCD
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CMT)
+            </dd>
+
+            <dt>
+                Giới tính
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh)
+            </dd>
+
+            <dt>
+                Ngày sinh
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+
+            <dt>
+                Địa chỉ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal px-md-5">
+            
+            <dt>
+                Chức vụ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ChucVu)
+            </dd>
+
+            <dt>
+                Trình độ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrinhDo)
+            </dd>
+
+            <dt>
+                Email
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                Số điện thoại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+
+            <dt>
+                Mã BHXH
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BHXH)
+            </dd>
+
+            <dt>
+                Dân tộc
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DanToc)
+            </dd>
+
+            <dt>
+                Tôn giáo
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TonGiao)
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                <img src="@Url.Content(ImagePath)" width="180" height="200" class="img-thumbnail" />
+            </dd>
+            <dd>
+                <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Edit", new { id = Model.MaNV })'">Chỉnh sửa</button> &nbsp;
+                @Html.ActionLink("Quay lại", "Index",null, new { @class="btn btn-success"})
+            </dd>
+        </dl>
+        
+    </div>
+</form>
+<input class="btn btn-da"/>
+

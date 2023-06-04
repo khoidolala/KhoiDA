@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Quên mật khẩu";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<h2 class="headerh2">Quên mật khẩu</h2>
+<span class="d-flex justify-content-center pb-2">Mã xác minh đã được gửi về email của bạn@*: @Session["Email"]*@</span>
+@using (Html.BeginForm("ConfirmCode", "LoginNhanVien", FormMethod.Post))
+{
+    <table class="m-auto">
+        <tbody>
+            <tr>
+                <th>
+                    <label for="">Mã xác minh</label>
+                </th>
+                <td>
+                    <input type="text" class="form-control" name="code" id="code" required/>
+                </td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td>@Html.Raw(ViewBag.Error)</td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="">Mật khẩu Mới</label>
+                </th>
+                <td>
+                    <input type="password" class="form-control" name="password" id="password" required/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex  justify-content-around pt-4">
+        <input type="submit" value="Gửi" class="btn btn-success" />
+        <a href="@Url.Action("Login", "LoginNhanVien")" class="btn btn-success ">Quay lại</a>
+    </div>
+}
+
+
+

@@ -1,0 +1,64 @@
+﻿@model QuanLyNhanSu.Models.tblPhong
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2" style="text-align:center">Chi tiết @Html.DisplayFor(model=>model.TenPhong)</h2>
+
+<div class="d-flex justify-content-center">
+    <dl class="dl-horizontal">
+        <dt>
+            Tên phòng/ban
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhong)
+        </dd>
+
+        <dt>
+            Trưởng phòng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTruongPhong)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiPhong)
+        </dd>
+        <dd>
+            <p>
+                <a href="@Url.Action("Index", "QLPhongs")" class="btn btn-success">
+                    Quay lại
+                </a>
+            </p>
+        </dd>
+    </dl>
+</div>
+@*<div>
+    <h4>Danh sách nhân viên phòng</h4>
+    <table class="table">
+        <tr>
+            <th>Mã nhân viên</th>
+            <th>Tên nhân viên</th>
+            <th>Chức vụ</th>
+        </tr>
+        
+        <tr>
+            <th>
+                @Html.DisplayFor(model => model.tblThongTinNVs.)
+             </th>
+            <th>
+                @Html.DisplayFor(model => model.TenNV)
+            </th>
+            <th>
+                @Html.DisplayFor(model=>model.ChucVu)
+            </th>
+        </tr>
+    </table>
+</div>*@

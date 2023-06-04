@@ -1,0 +1,114 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.tblNghiPhep>
+@{
+    ViewBag.Title = "Index";
+    if (ViewBag.quyen == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        <h2 class="headerh2">Danh sách xin nghỉ phép</h2>
+        <div>
+            <table class="table m-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Mã nhân viên</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Ngày bắt đầu</th>
+                        <th scope="col">Ngày kết thúc</th>
+                        <th scope="col">Duyệt</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MaNV</td>
+                            <td>@item.tblThongTinNV.TenNV</td>
+                            <td>@item.NgayBatDau</td>
+                            <td>@item.NgayKetThuc</td>
+                            <td>
+                                @if (@item.Duyet == true)
+                                {
+                                    <span class="text-success">Đã duyệt</span>
+                                }
+                                else
+                                {
+                                    <span class="text-secondary">Chưa duyệt</span>
+                                }
+                            </td>
+                            <td>
+                                @if (@item.Duyet == true)
+                                {
+                                    <a style="opacity:0.5" class="btn btn-danger">Xóa</a>
+                                }
+                                else
+                                {
+                                    if (ViewBag.quyen == 2)
+                                    {
+                                        <a href="/XinNghiPhep/Duyet/@item.MaNghiPhep" class="btn btn-primary">Duyệt</a>
+                                    }
+                                    <a href="/XinNghiPhep/Xoa/@item.MaNghiPhep" class="btn btn-outline-danger">Xóa</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+        <h2 class="headerh2">Xin nghỉ phép</h2>
+        <div class="px-md-5">
+            <a class="btn btn-primary px-md-5" href="/XinNghiPhep/ThemMoi">Xin nghỉ</a>
+            <table class="table m-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Ngày bắt đầu</th>
+                        <th scope="col">Ngày kết thúc</th>
+                        <th scope="col">Duyệt</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.NgayBatDau</td>
+                            <td>@item.NgayKetThuc</td>
+                            <td>
+                                @if (@item.Duyet == true)
+                                {
+                                    <span class="text-success">Đã duyệt</span>
+                                }
+                                else
+                                {
+                                    <span class="text-secondary">Chưa duyệt</span>
+                                }
+                            </td>
+                            <td>
+                                @if (@item.Duyet == true)
+                                {
+                                    <a style="opacity:0.5" class="btn btn-danger">Xóa</a>
+                                }
+                                else
+                                {
+                                    if (ViewBag.quyen == 2)
+                                    {
+                                        <a href="/XinNghiPhep/Duyet/@item.MaNghiPhep" class="btn btn-primary">Duyệt</a>
+                                    }
+                                    <a href="/XinNghiPhep/Xoa/@item.MaNghiPhep" class="btn btn-outline-danger">Xóa</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+
+<script>
+    localStorage.removeItem("notiNghiPhep")
+</script>

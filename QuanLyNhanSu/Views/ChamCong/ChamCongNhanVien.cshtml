@@ -1,0 +1,42 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.tblChamCongs>
+@{
+    ViewBag.Title = "Thông tin chấm công";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<h2 class="headerh2">Bảng chấm công</h2>
+<form class="px-md-4 w-auto">
+    <table class="table">
+        <tr class="text-danger">
+            <th>
+                Ngày
+            </th>
+            <th>
+                Giờ vào
+            </th>
+            <th>
+                Giờ ra
+            </th>
+            <th>
+                Trạng thái
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Ngay)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.ThoiGianVao)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.ThoiGianRa)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.TrangThai)
+                </th>
+            </tr>
+        }
+    </table>
+</form>
+

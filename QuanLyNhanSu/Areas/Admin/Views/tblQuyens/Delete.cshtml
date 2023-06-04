@@ -1,0 +1,38 @@
+﻿@model QuanLyNhanSu.Models.tblQuyen
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2">Xóa quyền truy cập</h2>
+
+<div class="px-md-5">
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Quyền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenQuyen)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xác nhận xóa" class="btn btn-danger" /> &nbsp;
+            @Html.ActionLink("Quay lại danh sách", "Index",null,new { @class="btn btn-primary"})
+        </div>
+    }
+</div>

@@ -1,0 +1,114 @@
+﻿@model PagedList.IPagedList<QuanLyNhanSu.Models.tblUser>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2" style="text-align:center">Danh sách tài khoản</h2>
+
+<p class="px-md-4">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-success" })
+</p>
+<form asp-action="Index" method="get" class="form-inline px-md-4 pt-2" style="width:50%; display:flex">
+    <input class="form-control" name="name" placeholder="Nhập tên tài khoản..." type="text">
+    <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search"></i>
+    </button>
+</form>
+<form class="px-md-4 pt-4">
+    <table class="table">
+        <tr>
+            <th>
+                Tên đăng nhập
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>
+                Quyền
+            </th>
+            <th>
+                Mã nhân viên
+            </th>
+            <th>
+                Tên nhân viên
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaNV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","QLTaiKhoan", new { id = item.IDUser})">
+                        <i class="fa-sharp fa-regular fa-pen-to-square"></i>
+                    </a>&nbsp;
+                    <a href="@Url.Action("Delete","QLTaiKhoan", new { id = item.IDUser})">
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</form>
+<div class="pagination px-md-4 pt-2">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @class = "pagination" }))
+</div>
+<style>
+
+    .pagination {
+        display: flex;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        .pagination a:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .pagination a:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+</style>

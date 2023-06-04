@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.tblQuyen>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2">Danh sách quyền truy cập</h2>
+<form class="px-md-4">
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-success" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>Mã quyền</th>
+            <th>
+                Tên quyền
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Quyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenQuyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Quyen }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Quyen })
+                </td>
+            </tr>
+        }
+
+    </table>
+</form>
+

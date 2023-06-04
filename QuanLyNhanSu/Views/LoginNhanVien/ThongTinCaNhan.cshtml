@@ -1,0 +1,138 @@
+﻿@model QuanLyNhanSu.Models.tblThongTinNV
+
+@{
+    ViewBag.Title = "ThongTinCaNhan";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var ImagePath = "~/Images/" + Model.UrlAnh;
+}
+
+<h2 class="headerh2">Thông tin cá nhân @Session["TenNV"]</h2>
+<form class="px-md-5">
+    <div class="d-flex">
+        <dl class="dl-horizontal px-md-5">
+            <dt>
+                Hệ số lương
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblHSL.HSL)
+            </dd>
+
+            <dt>
+                Phòng/ban
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblPhong.TenPhong)
+            </dd>
+
+            <dt>
+                Họ và tên
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenNV)
+            </dd>
+
+            <dt>
+                Số CMT/CCCD
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CMT)
+            </dd>
+
+            <dt>
+                Giới tính
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh)
+            </dd>
+
+            <dt>
+                Ngày sinh
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+
+            <dt>
+                Địa chỉ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal px-md-5">
+
+            <dt>
+                Chức vụ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ChucVu)
+            </dd>
+
+            <dt>
+                Trình độ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrinhDo)
+            </dd>
+
+            <dt>
+                Email
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                Số điện thoại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+
+            <dt>
+                Mã BHXH
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BHXH)
+            </dd>
+
+            <dt>
+                Dân tộc
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DanToc)
+            </dd>
+
+            <dt>
+                Tôn giáo
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TonGiao)
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                <img src="@Url.Content(ImagePath)" width="220" height="260" class="img-thumbnail" />
+            </dd>
+        </dl>
+        <dl class="px-md-4">
+            <dd><button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","QLNhanVien",new { id = Model.MaNV})'">Cập nhập</button></dd>
+            <dd><button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("ChangePassword","LoginNhanVien")'">Đổi mật khẩu</button></dd>
+            @*<dd><button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("ForgotPassword","LoginNhanVien")'">Quên mật khẩu</button></dd>*@
+            <dd><button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("LuongNV","QLLuongs")'">Xem bảng lương</button></dd>
+        </dl>
+    </div>
+</form>

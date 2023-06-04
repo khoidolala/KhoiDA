@@ -1,0 +1,66 @@
+﻿@model QuanLyNhanSu.Models.tblLuong
+@{
+    ViewBag.Title = "ChiTietLuong";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2 class="headerh2">Chi tiết lương tháng @Html.DisplayFor(model => model.Thang)</h2>
+<div class="d-flex justify-content-center">
+    <div class="w-25">
+        <div class="d-flex">
+            <p class="w-50">@Html.DisplayNameFor(model => model.tblThongTinNV.TenNV)</p>
+            <p>@Html.DisplayFor(model => model.tblThongTinNV.TenNV)</p>
+        </div>
+        <div class="d-flex">
+            <p class="w-50">
+                Tiền thưởng
+            </p>
+            @Html.DisplayFor(model => model.tblThuong.TienThuong)
+        </div>
+        <div class="d-flex">
+            <p class="w-50">
+                Tiền phụ cấp
+            </p>
+            @Html.DisplayFor(model => model.tblPhuCap.TienPhuCap)
+        </div>
+        <div class="d-flex">
+            <p class="w-50">
+                Số ngày làm việc
+            </p>
+
+            @Html.DisplayFor(model => model.SoNgayLamViec)
+        </div>
+        <div class="d-flex">
+            <p class="w-50">
+                Số giờ làm việc
+            </p>
+            @Html.DisplayFor(model => model.SoGioLamViec)
+        </div>
+        <div class="d-flex">
+
+            <p class="w-50">
+                Tiền phạt
+            </p>
+            @Html.DisplayFor(model => model.TienPhat)
+
+        </div>
+        <div class="d-flex">
+            <p class="w-50">
+                Tạm ứng
+            </p>
+
+
+            @Html.DisplayFor(model => model.TamUng)
+        </div>
+        <div class="d-flex">
+            <p class="w-50">
+                Tổng lương
+            </p>
+            @Model.TongLuong()
+        </div>
+        <div class="d-flex">
+            <button onclick="location.href='@Url.Action("DownloadPDF", "QLLuongs", new { id = Model.MaLuong })'" class="btn btn-success">Tải file PDF</button> &nbsp;
+            <button onclick="location.href='@Url.Action("LuongNV", "QLLuongs", new { id = Model.MaLuong })'" class="btn btn-primary">Quay lại</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+﻿@model QuanLyNhanSu.Models.tblLuong
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2">Chỉnh sửa</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal px-md-4">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaLuong)
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Tháng</p></div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Thang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Thang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Họ và tên</p></div>
+            <div class="col-md-5 ">
+                @Html.DropDownList("MaNV", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaNV, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Số ngày làm việc</p></div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.SoNgayLamViec, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoNgayLamViec, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Số giờ làm việc</p></div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.SoGioLamViec, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoGioLamViec, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Hệ số lương</p></div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.tblHSL.HSL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tblHSL.HSL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Tiền thưởng</p></div>
+            <div class="col-md-5">
+                @Html.DropDownList("MaThuong", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaThuong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Tiền phụ cấp</p></div>
+            <div class="col-md-5">
+                @Html.DropDownList("MaPhuCap", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaPhuCap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Tiền phạt</p></div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.TienPhat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TienPhat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group d-flex pb-2">
+            <div class="control-label col-md-2"><p>Tạm ứng</p></div>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.TamUng, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TamUng, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group  d-flex pt-2">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu lại" class="btn btn-success" />
+            </div>
+            <div>
+                @Html.ActionLink("Quay lại danh sách", "Index",null,new { @class="btn btn-success"})
+            </div>
+        </div>
+    </div>
+}
+
+

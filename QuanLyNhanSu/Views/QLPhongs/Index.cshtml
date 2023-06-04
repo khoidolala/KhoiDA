@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.tblPhong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="headerh2" style="text-align:center">Danh Sách phòng ban</h2>
+<p class="px-md-5">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-success" })
+</p>
+<form class="px-md-5">
+    <table class="table">
+        <tr>
+            <th>
+                Tên Phòng/ban
+            </th>
+            <th>
+                Trưởng phòng
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenPhong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTruongPhong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoaiPhong)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","QLPhongs", new { id = item.MaPhong})">
+                        <i class="fa-sharp fa-regular fa-pen-to-square"></i>
+                    </a>&nbsp;
+                    <a href="@Url.Action("Details","QLPhongs", new { id = item.MaPhong})">
+                        <i class="fa-sharp fa-solid fa-calendar-week"></i>
+                    </a>&nbsp;
+                    <a href="@Url.Action("Delete","QLPhongs", new { id = item.MaPhong})">
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</form>
+
